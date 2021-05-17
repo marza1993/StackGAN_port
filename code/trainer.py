@@ -195,12 +195,12 @@ class GANTrainer(object):
 
                 count = count + 1
                 if i % 100 == 0:
-                    summary_D = summary.scalar('D_loss', errD.data[0])
+                    summary_D = summary.scalar('D_loss', errD.data)
                     summary_D_r = summary.scalar('D_loss_real', errD_real)
                     summary_D_w = summary.scalar('D_loss_wrong', errD_wrong)
                     summary_D_f = summary.scalar('D_loss_fake', errD_fake)
-                    summary_G = summary.scalar('G_loss', errG.data[0])
-                    summary_KL = summary.scalar('KL_loss', kl_loss.data[0])
+                    summary_G = summary.scalar('G_loss', errG.data)
+                    summary_KL = summary.scalar('KL_loss', kl_loss.data)
 
                     self.summary_writer.add_summary(summary_D, count)
                     self.summary_writer.add_summary(summary_D_r, count)
@@ -222,7 +222,7 @@ class GANTrainer(object):
                      Total Time: %.2fsec
                   '''
                   % (epoch, self.max_epoch, i, len(data_loader),
-                     errD.data[0], errG.data[0], kl_loss.data[0],
+                     errD.data, errG.data, kl_loss.data,
                      errD_real, errD_wrong, errD_fake, (end_t - start_t)))
             if epoch % self.snapshot_interval == 0:
                 save_model(netG, netD, epoch, self.model_dir)
@@ -241,6 +241,8 @@ class GANTrainer(object):
         # Load text embeddings generated from the encoder
         t_file = torchfile.load(datapath)
         captions_list = t_file.raw_txt
+
+
         embeddings = np.concatenate(t_file.fea_txt, axis=0)
         num_embeddings = len(captions_list)
         print('Successfully load sentences from: ', datapath)
@@ -248,6 +250,7 @@ class GANTrainer(object):
         print('num_embeddings:', num_embeddings, embeddings.shape)
         # path to save generated samples
         save_dir = cfg.NET_G[:cfg.NET_G.find('.pth')]
+        print("output folder for evaluation images: {}".format(save_dir))
         mkdir_p(save_dir)
 
         batch_size = np.minimum(num_embeddings, self.batch_size)
@@ -256,35 +259,41 @@ class GANTrainer(object):
         if cfg.CUDA:
             noise = noise.cuda()
         count = 0
-        while count < num_embeddings:
-            if count > 3000:
-                break
-            iend = count + batch_size
-            if iend > num_embeddings:
-                iend = num_embeddings
-                count = num_embeddings - batch_size
-            embeddings_batch = embeddings[count:iend]
-            # captions_batch = captions_list[count:iend]
-            txt_embedding = Variable(torch.FloatTensor(embeddings_batch))
-            if cfg.CUDA:
-                txt_embedding = txt_embedding.cuda()
 
-            #######################################################
-            # (2) Generate fake images
-            ######################################################
-            noise.data.normal_(0, 1)
-            inputs = (txt_embedding, noise)
-            _, fake_imgs, mu, logvar = \
-                nn.parallel.data_parallel(netG, inputs, self.gpus)
-            for i in range(batch_size):
-                save_name = '%s/%d.png' % (save_dir, count + i)
-                im = fake_imgs[i].data.cpu().numpy()
-                im = (im + 1.0) * 127.5
-                im = im.astype(np.uint8)
-                # print('im', im.shape)
-                im = np.transpose(im, (1, 2, 0))
-                # print('im', im.shape)
-                im = Image.fromarray(im)
-                im.save(save_name)
-            count += batch_size
+        with open("{}/captions_imgs_map.txt".format(save_dir), "w") as f:
+
+            while count < num_embeddings:
+                if count > 300:
+                    break
+                iend = count + batch_size
+                if iend > num_embeddings:
+                    iend = num_embeddings
+                    count = num_embeddings - batch_size
+                embeddings_batch = embeddings[count:iend]
+                # captions_batch = captions_list[count:iend]
+                txt_embedding = Variable(torch.FloatTensor(embeddings_batch))
+                if cfg.CUDA:
+                    txt_embedding = txt_embedding.cuda()
+
+                #######################################################
+                # (2) Generate fake images
+                ######################################################
+                noise.data.normal_(0, 1)
+                inputs = (txt_embedding, noise)
+                _, fake_imgs, mu, logvar = \
+                    nn.parallel.data_parallel(netG, inputs, self.gpus)
+                for i in range(batch_size):
+                    save_name = '%s/%d.png' % (save_dir, count + i)
+
+                    im = fake_imgs[i].data.cpu().numpy()
+                    im = (im + 1.0) * 127.5
+                    im = im.astype(np.uint8)
+                    # print('im', im.shape)
+                    im = np.transpose(im, (1, 2, 0))
+                    # print('im', im.shape)
+                    im = Image.fromarray(im)
+                    im.save(save_name)
+                    f.write("{}.png - {}\n".format(count + i, captions_list[count + i].decode("utf-8")))
+                    # save also corresponding captions
+                count += batch_size
 

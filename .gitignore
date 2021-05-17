@@ -4,3 +4,7 @@ code/miscc/*.pyc
 backup
 .DS_Store
 .idea/
+
+# scripts
+*.bat
+*.sh

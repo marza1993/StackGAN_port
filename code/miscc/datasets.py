@@ -104,7 +104,7 @@ class TextDataset(data.Dataset):
             embedding_filename = '/skip-thought-embeddings.pickle'
 
         with open(data_dir + embedding_filename, 'rb') as f:
-            embeddings = pickle.load(f)
+            embeddings = pickle.load(f, encoding="bytes")
             embeddings = np.array(embeddings)
             # embedding_shape = [embeddings.shape[-1]]
             print('embeddings: ', embeddings.shape)
@@ -113,7 +113,7 @@ class TextDataset(data.Dataset):
     def load_class_id(self, data_dir, total_num):
         if os.path.isfile(data_dir + '/class_info.pickle'):
             with open(data_dir + '/class_info.pickle', 'rb') as f:
-                class_id = pickle.load(f)
+                class_id = pickle.load(f, encoding="bytes")
         else:
             class_id = np.arange(total_num)
         return class_id
@@ -138,6 +138,7 @@ class TextDataset(data.Dataset):
 
         # captions = self.captions[key]
         embeddings = self.embeddings[index, :, :]
+        #print(key) # MZ -- 05/05/21
         img_name = '%s/images/%s.jpg' % (data_dir, key)
         img = self.get_img(img_name, bbox)
 

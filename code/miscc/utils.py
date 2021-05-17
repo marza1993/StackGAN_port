@@ -58,7 +58,9 @@ def compute_discriminator_loss(netD, real_imgs, fake_imgs,
         errD_fake = (errD_fake + uncond_errD_fake) / 2.
     else:
         errD = errD_real + (errD_fake + errD_wrong) * 0.5
-    return errD, errD_real.data[0], errD_wrong.data[0], errD_fake.data[0]
+    # M.Z: 06/05/21 pytorch dopo il 0.5 non puoi fare [0] su tensori di dim 0
+    #return errD, errD_real.data[0], errD_wrong.data[0], errD_fake.data[0]
+    return errD, errD_real.data, errD_wrong.data, errD_fake.data
 
 
 def compute_generator_loss(netD, fake_imgs, real_labels, conditions, gpus):
