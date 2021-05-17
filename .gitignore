@@ -8,3 +8,6 @@ backup
 # scripts
 *.bat
 *.sh
+
+# visual studio folder
+.vs
