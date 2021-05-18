@@ -109,7 +109,7 @@ From `./code` folder:
 `python img_caption_viewer.py --img_path ../models/coco/netG_epoch_<N>`.
 
 
-Examples:
+### Examples:
  
 ![](examples/coco_2.png)
 ![](examples/coco_3.png)
