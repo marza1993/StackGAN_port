@@ -3,7 +3,7 @@
 This repository, forked from [StackGAN-pytorch](https://github.com/hanzhanggit/StackGAN-Pytorch.git), is an implementation 
 of the author's "StackGAN" text-to-image synthesis method, that is compatible with **python >= 3.6 and newer versions of torch and CUDA**, as the original could be run only with python 2.7 and older libraries.
 
-Also, this code can be run both on Ubuntu 18.04 and on Windows 10 x64 (see the "Dependencies" section below).
+Also, this code can be run both on Ubuntu 18.04 and on Windows 10 x64 (see the **Dependencies** section below).
 
 
 - [Tensorflow implementation](https://github.com/hanzhanggit/StackGAN)
