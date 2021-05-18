@@ -25,7 +25,7 @@ Pytorch implementation for reproducing COCO results in the paper [StackGAN: Text
 - CUDA: 10.1. Use the following command to check wich version is installed on your system: `nvcc --version`
 - Python: >= 3.6 (tested with python 3.6.9)
 - Torch: 1.7.0+cu101. Use the following command: `pip install torch==1.7.0 torchvision==0.8.1 -f https://download.pytorch.org/whl/cu101/torch_stable.html`. If you want to install different versions go to [Pytorch download page](https://pytorch.org/get-started/locally/).
-  To check that torch works correctly with CUDA run the "test_gpu_torch.py" script and see the generated output (it should output "True", a string describing the CUDA device found and the name of your GPU card).
+To check that torch works correctly with CUDA run the "test_gpu_torch.py" script and see the generated output (it should output "True", a string describing the CUDA device found and the name of your GPU card).
 - Install packages from "requirements_ubuntu_18-04.txt". Use the command: `pip install requirements_ubuntu_18-04.txt`
 
 **Windows**
