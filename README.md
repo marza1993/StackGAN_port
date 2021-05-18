@@ -99,7 +99,8 @@ data
 ### Evaluating
 From `./code` folder:
 1. Run evaluation:
-        * set the path to the last saved generator model from Stage-II GAN in the `coco_eval.yml` file, e.g: `NET_G: '../models/coco/netG_epoch_90.pth'`;
+        * set the path to the last saved generator model from Stage-II GAN in the `coco_eval.yml` file, e.g:\
+        `NET_G: '../models/coco/netG_epoch_90.pth'`;
         * run `python main.py --cfg cfg/coco_eval.yml --gpu <GPU_ID>` to generate samples from captions in COCO validation set.
           The output images will be saved in a folder such as: `../models/coco/netG_epoch_<N>` (where N is the number of epoch of last saved model).
 2. To save an image along with the caption from which it was generated: run `python img_caption_viewer.py --img_path ../models/coco/netG_epoch_<N>`.
