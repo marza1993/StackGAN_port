@@ -1,5 +1,4 @@
-# StackGAN-pytorch port
-## Ubuntu/Windows, python >= 3.6, torch >= 1.7, CUDA >= 10.x
+# StackGAN-pytorch: Ubuntu/Windows, python 3.6+, torch 1.7+, CUDA 10.0+
 
 This repository, forked from [StackGAN-pytorch](https://github.com/hanzhanggit/StackGAN-Pytorch.git), is an implementation 
 of the author's "StackGAN" text-to-image synthesis method, that is compatible with **python >= 3.6 and newer versions of torch and CUDA**, as the original could be run only with python 2.7 and older libraries.
