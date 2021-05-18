@@ -1,4 +1,4 @@
-# StackGAN-pytorch port:\
+# StackGAN-pytorch port
 ## Ubuntu/Windows, python >= 3.6, torch >= 1.7, CUDA >= 10.x
 
 This repository, forked from [StackGAN-pytorch](https://github.com/hanzhanggit/StackGAN-Pytorch.git), is an implementation 
