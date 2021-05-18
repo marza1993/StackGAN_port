@@ -59,8 +59,8 @@ To check that torch works correctly with CUDA run the "test_gpu_torch.py" script
 
 **Training**
 - The steps to train a StackGAN model on the COCO dataset using our preprocessed embeddings.
-  - Step 1: train Stage-I GAN (e.g., for 120 epochs) `python main.py --cfg cfg/coco_s1.yml --gpu 0`
-  - Step 2: train Stage-II GAN (e.g., for another 120 epochs) `python main.py --cfg cfg/coco_s2.yml --gpu 1`
+  - Step 1: train Stage-I GAN (e.g., for 120 epochs) . From the `./code` folder: `python main.py --cfg cfg/coco_s1.yml --gpu 0`
+  - Step 2: train Stage-II GAN (e.g., for another 120 epochs). From the `./code` folder: `python main.py --cfg cfg/coco_s2.yml --gpu 1`
 - `*.yml` files are example configuration files for training/evaluating our models.
 - If you want to try your own datasets, [here](https://github.com/soumith/ganhacks) are some good tips about how to train GAN. Also, we encourage to try different hyper-parameters and architectures, especially for more complex datasets.
 
@@ -73,7 +73,7 @@ To check that torch works correctly with CUDA run the "test_gpu_torch.py" script
 
 
 **Evaluating**
-- Run `python main.py --cfg cfg/coco_eval.yml --gpu 2` to generate samples from captions in COCO validation set.
+- From the From the `./code` folder, run `python main.py --cfg cfg/coco_eval.yml --gpu 2` to generate samples from captions in COCO validation set.
 
 Examples for COCO:
  
