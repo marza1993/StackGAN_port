@@ -82,8 +82,10 @@ data
   - Step 1: train Stage-I GAN (e.g., for 120 epochs). \
     From the `./code` folder: `python main.py --cfg cfg/coco_s1.yml --gpu <GPU_ID>` (if you only have one GPU card, GPU_ID = 0).
   - Step 2: 
-      * set the path to the last saved model from Stage-I GAN in the `coco_s2.yml` file, e.g: `STAGE1_G: '../output/coco_stageI/Model/netG_epoch_120.pth'`;
-      * train Stage-II GAN (e.g., for another 120 epochs). From the `./code` folder: `python main.py --cfg cfg/coco_s2.yml --gpu <GPU_ID>`.
+      * set the path to the last saved model from Stage-I GAN in the `coco_s2.yml` file, e.g:\
+      `STAGE1_G: '../output/coco_stageI/Model/netG_epoch_120.pth'`;
+      * train Stage-II GAN (e.g., for another 120 epochs). From the `./code` folder:\
+      `python main.py --cfg cfg/coco_s2.yml --gpu <GPU_ID>`.
 - `*.yml` files are example configuration files for training/evaluating our models.
 - If you run in GPU memory occupation errors, try reducing the batch size in the `*.yml` files, e.g. from 128 to 64.
 - If you want to try your own datasets, [here](https://github.com/soumith/ganhacks) are some good tips about how to train GAN. Also, we encourage to try different hyper-parameters and architectures, especially for more complex datasets.
@@ -103,7 +105,8 @@ From `./code` folder:
         `NET_G: '../models/coco/netG_epoch_90.pth'`;
         * run `python main.py --cfg cfg/coco_eval.yml --gpu <GPU_ID>` to generate samples from captions in COCO validation set.
           The output images will be saved in a folder such as: `../models/coco/netG_epoch_<N>` (where N is the number of epoch of last saved model).
-2. To save an image along with the caption from which it was generated: run `python img_caption_viewer.py --img_path ../models/coco/netG_epoch_<N>`.
+2. To save an image along with the caption from which it was generated: run \
+`python img_caption_viewer.py --img_path ../models/coco/netG_epoch_<N>`.
 
 
 Examples:
