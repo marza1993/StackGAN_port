@@ -11,3 +11,6 @@ backup
 
 # visual studio folder
 .vs
+
+# python cache
+code/__pycache__
