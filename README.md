@@ -93,7 +93,7 @@ data
 
 ### Evaluating
 1. From the `./code` folder, run `python main.py --cfg cfg/coco_eval.yml --gpu <GPU_ID>` to generate samples from captions in COCO validation set.
-2. From the `./code` folder, run `python img_caption_viewer.py` TODO parametri.. 
+2. To save an image along with the caption from which it was generated: `./code` folder, run `python img_caption_viewer.py` TODO parametri.. 
 Examples for COCO:
  
 ![](examples/coco_2.png)
