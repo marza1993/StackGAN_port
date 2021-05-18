@@ -53,27 +53,47 @@ To check that torch works correctly with CUDA run the "test_gpu_torch.py" script
 
 1. Download our preprocessed char-CNN-RNN text embeddings for [training coco](https://drive.google.com/open?id=0B3y_msrWZaXLQXVzOENCY2E3TlU) and  [evaluating coco](https://drive.google.com/open?id=0B3y_msrWZaXLeEs5MTg0RC1fa0U), save them to `data/coco`.
   - [Optional] Follow the instructions [reedscot/icml2016](https://github.com/reedscot/icml2016) to download the pretrained char-CNN-RNN text encoders and extract text embeddings.
-2. Download the [coco](http://cocodataset.org/#download) image data. Extract them to `data/coco/`.
+2. Download the [coco](http://cocodataset.org/#download) image data. Extract all the images into `data/coco/images` folder.
+3. The data folder structure should look like:
+  +-- data
+  /   +-- coco
+  /   /   +-- images
+  /   /   /   +-- COCO_train2014_000000581921.jpg
+  /   /   /   +-- COCO_train2014_000000581909.jpg
+  /   /   /   +-- ...
+  /   /   +-- test
+  /   /   /   +-- filename.txt
+  /   /   /   +-- filename.pickle
+  /   /   /   +-- val_filename.txt
+  /   /   /   +-- val_captions.txt
+  /   /   /   +-- val_captions.t7
+  /   /   +-- train
+  /   /   /   +-- char-CNN-RNN-embeddings.pickle
+  /   /   /   +-- filenames.pickle 
+  
 
 
 
-**Training**
+
+### Training
 - The steps to train a StackGAN model on the COCO dataset using our preprocessed embeddings.
-  - Step 1: train Stage-I GAN (e.g., for 120 epochs) . From the `./code` folder: `python main.py --cfg cfg/coco_s1.yml --gpu 0`
-  - Step 2: train Stage-II GAN (e.g., for another 120 epochs). From the `./code` folder: `python main.py --cfg cfg/coco_s2.yml --gpu 1`
+  - Step 1: train Stage-I GAN (e.g., for 120 epochs) . From the `./code` folder: `python main.py --cfg cfg/coco_s1.yml --gpu <GPU_ID>` (if you only have one GPU card, GPU_ID = 0).
+  - Step 2: train Stage-II GAN (e.g., for another 120 epochs). From the `./code` folder: `python main.py --cfg cfg/coco_s2.yml --gpu <GPU_ID>`
 - `*.yml` files are example configuration files for training/evaluating our models.
+- If you run in GPU memory occupation errors, try reducing the batch size in the `*.yml` files, e.g. from 128 to 64.
 - If you want to try your own datasets, [here](https://github.com/soumith/ganhacks) are some good tips about how to train GAN. Also, we encourage to try different hyper-parameters and architectures, especially for more complex datasets.
 
 
 
-**Pretrained Model**
+### Pretrained Model
 - [StackGAN for coco](https://drive.google.com/open?id=0B3y_msrWZaXLYjNra2ZSSmtVQlE). Download and save it to `models/coco`.
 - **Our current implementation has a higher inception score(10.62±0.19) than reported in the StackGAN paper**
 
 
 
-**Evaluating**
-- From the From the `./code` folder, run `python main.py --cfg cfg/coco_eval.yml --gpu 2` to generate samples from captions in COCO validation set.
+### Evaluating
+- From the `./code` folder, run `python main.py --cfg cfg/coco_eval.yml --gpu <GPU_ID>` to generate samples from captions in COCO validation set.
+TODO: aggiungere la parte del visualizzatore
 
 Examples for COCO:
  
