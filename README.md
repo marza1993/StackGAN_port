@@ -39,7 +39,7 @@ To check that torch works correctly with CUDA run the "test_gpu_torch.py" script
   To check that torch works correctly with CUDA run the "test_gpu_torch.py" script and see the generated output.
 - Install packages from "requirements_win_10_x64.txt". Use the command: `pip install <path_to>/requirements_win_10_x64.txt`
 
-**Recommended**: in order not to mix different packages and/or python versions on your system, it is convenient to use a virtual environment, which is a self contained environment with all the dependencies needed by your application. with **virtualenv**:
+**Recommended**: in order not to mix different packages and/or python versions on your system, it is convenient to use a virtual environment, which is a self-contained environment with all the dependencies needed by your application. with **virtualenv**:
 - Create a new virtual environment: `virtualenv -p <path_to_python_executable> <virtual_env_name>`
 - Activate the created environment. 
     * on Windows: `<virtual_env_name>/Scripts/activate`
