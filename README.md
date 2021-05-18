@@ -55,6 +55,7 @@ To check that torch works correctly with CUDA run the "test_gpu_torch.py" script
   - [Optional] Follow the instructions [reedscot/icml2016](https://github.com/reedscot/icml2016) to download the pretrained char-CNN-RNN text encoders and extract text embeddings.
 2. Download the [coco](http://cocodataset.org/#download) image data. Extract all the images into `data/coco/images` folder.
 3. The data folder structure should look like:
+```
   +-- data
   /   +-- coco
   /   /   +-- images
@@ -70,6 +71,7 @@ To check that torch works correctly with CUDA run the "test_gpu_torch.py" script
   /   /   +-- train
   /   /   /   +-- char-CNN-RNN-embeddings.pickle
   /   /   /   +-- filenames.pickle 
+```
   
 
 
