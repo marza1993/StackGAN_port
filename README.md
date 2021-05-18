@@ -26,7 +26,7 @@ Pytorch implementation for reproducing COCO results in the paper [StackGAN: Text
 - Python: >= 3.6 (tested with python 3.6.9)
 - Torch: 1.7.0+cu101. Use the following command: `pip install torch==1.7.0 torchvision==0.8.1 -f https://download.pytorch.org/whl/cu101/torch_stable.html`. If you want to install different versions go to [Pytorch download page](https://pytorch.org/get-started/locally/). \
 To check that torch works correctly with CUDA run the "test_gpu_torch.py" script and see the generated output (it should output "True", a string describing the CUDA device found and the name of your GPU card).
-- Install packages from "requirements_ubuntu_18-04.txt". Use the command: `pip install requirements_ubuntu_18-04.txt`
+- Install packages from "requirements_ubuntu_18-04.txt". Use the command: `pip install <path_to>/requirements_ubuntu_18-04.txt`.
 
 **Windows**
 
@@ -35,14 +35,14 @@ To check that torch works correctly with CUDA run the "test_gpu_torch.py" script
 - Python: >= 3.6 (tested with python 3.7.8)
 - Torch: 1.8.1+cu102. Use the following command: `pip install torch==1.8.1 torchvision==0.9.1 -f https://download.pytorch.org/whl/cu102/torch_stable.html`. If you want to install different versions go to [Pytorch download page](https://pytorch.org/get-started/locally/).\
   To check that torch works correctly with CUDA run the "test_gpu_torch.py" script and see the generated output.
-- Install packages from "requirements_win_10_x64.txt". Use the command: `pip install requirements_win_10_x64.txt`
+- Install packages from "requirements_win_10_x64.txt". Use the command: `pip install <path_to>/requirements_win_10_x64.txt`
 
 **Recommended**: in order not to mix different packages and/or python versions on your system, it is convenient to use a virtual environment, which is a self contained environment with all the dependencies needed by your application. with **virtualenv**:
 - Create a new virtual environment: `virtualenv -p <path_to_python_executable> <virtual_env_name>`
 - Activate the created environment. 
     * on Windows: `<virtual_env_name>/Scripts/activate`
     * on Linux: `source <virtual_env_name>/Scripts/activate`
-- Once the environment is activated, install the required dependencies: `pip install requirements_<win/linux>.txt`
+- Once the environment is activated, install the required dependencies: `pip install <path_to>/requirements_<win/linux>.txt` (see the two previous sections).
 - With the `pip list` command, you will see all the packages available within the environment.
 - Execute your application
 - Deactivate: `deactivate`
