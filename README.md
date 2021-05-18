@@ -33,7 +33,7 @@ To check that torch works correctly with CUDA run the "test_gpu_torch.py" script
 - Windows version: 10, 64 bit (x64).
 - CUDA: 10.0. Use the following command to check wich version is installed on your system: `nvcc --version`
 - Python: >= 3.6 (tested with python 3.7.8)
-- Torch: 1.8.1+cu102. Use the following command: `pip install torch==1.8.1 torchvision==0.9.1 -f https://download.pytorch.org/whl/cu102/torch_stable.html`. If you want to install different versions go to [Pytorch download page](https://pytorch.org/get-started/locally/).
+- Torch: 1.8.1+cu102. Use the following command: `pip install torch==1.8.1 torchvision==0.9.1 -f https://download.pytorch.org/whl/cu102/torch_stable.html`. If you want to install different versions go to [Pytorch download page](https://pytorch.org/get-started/locally/).\
   To check that torch works correctly with CUDA run the "test_gpu_torch.py" script and see the generated output.
 - Install packages from "requirements_win_10_x64.txt". Use the command: `pip install requirements_win_10_x64.txt`
 
