@@ -4,6 +4,16 @@ from PIL import ImageFont
 import math
 import random
 import os
+import argparse
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description='visualize image-captions')
+    parser.add_argument('--img_path', dest='imgs_path',
+                        help='required evaluation images path',
+                        default='../models/coco/netG_epoch_100/', type=str)
+    args = parser.parse_args()
+    return args
 
 
 def split_long_caption(caption, max_line_length):
@@ -81,7 +91,13 @@ def get_captions_and_imgs(file_name):
 
 if __name__ == "__main__":
 
-    data_path = "../models/coco/netG_epoch_100/"
+    args = parse_args()
+    data_path = args.imgs_path
+    if data_path[-1] != '/':
+        data_path = data_path + '/'
+    print(data_path)
+
+    #data_path = "../models/coco/netG_epoch_100/"
     output_path = data_path + "/img_with_captions/"
     file_path = data_path + "captions_imgs_map.txt"
     img_captions_dict = get_captions_and_imgs(file_path)
