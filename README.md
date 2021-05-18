@@ -56,21 +56,21 @@ To check that torch works correctly with CUDA run the "test_gpu_torch.py" script
 2. Download the [coco](http://cocodataset.org/#download) image data. Extract all the images into `data/coco/images` folder.
 3. The data folder structure should look like:
 ```
-  |-- data
-  |   |-- coco
-  |   |   |-- images
-  |   |   |    COCO_train2014_000000581921.jpg
-  |   |   |    COCO_train2014_000000581909.jpg
-  |   |   |    ...
-  |   |   |-- test
-  |   |   |    filename.txt
-  |   |   |    filename.pickle
-  |   |   |    val_filename.txt
-  |   |   |    val_captions.txt
-  |   |   |    val_captions.t7
-  |   |   |-- train
-  |   |   |    char-CNN-RNN-embeddings.pickle
-  |   |   |    filenames.pickle 
+data
+|-- coco
+|   |-- images
+|   |    COCO_train2014_000000581921.jpg
+|   |    COCO_train2014_000000581909.jpg
+|   |    ...
+|   |-- test
+|   |    filename.txt
+|   |    filename.pickle
+|   |    val_filename.txt
+|   |    val_captions.txt
+|   |    val_captions.t7
+|   |-- train
+|   |    char-CNN-RNN-embeddings.pickle
+|   |    filenames.pickle 
 ```
   
 
